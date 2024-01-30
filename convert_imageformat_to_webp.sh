@@ -1,16 +1,17 @@
 #!/bin/bash
 
 # Recursive function to traverse directories
-convert_jpeg_to_webp() {
-    local dir="$1"
+convert_imageformat_to_webp() {
+    local original_format="$1"
+    local dir="$2"
     local file
 
     # Loop through files and directories in the current directory
     for file in "$dir"/*; do
         if [ -d "$file" ]; then
             # If the item is a directory, call the function recursively
-            convert_jpeg_to_webp "$file"
-        elif [ -f "$file" ] && { [[ "$file" == *.jpg ]] || [[ "$file" == *.jpeg ]]; }; then
+            convert_imageformat_to_webp "$file" "$original_format"
+        elif [ -f "$file" ] && { [[ "$file" == *".$original_format" ]]; }; then
             # If the item is a JPEG file, convert it to WebP format
             filename=$(basename "$file")
             cwebp "$file" -o "${file%.*}.webp"
@@ -20,4 +21,4 @@ convert_jpeg_to_webp() {
 }
 
 # Start the recursive conversion from the current directory
-convert_jpeg_to_webp "$(pwd)"
+convert_imageformat_to_webp "$1" "$(pwd)" 
