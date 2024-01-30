@@ -13,7 +13,11 @@ The scripts are designed to recursively convert PNG and JPEG images to the WebP 
    chmod +x <filename>.sh
 
 3. **To execute the Static Script:**
-   Execute the script using ./<filename>.sh e.g. ./convert_png_to_webp.sh
+   Execute the script using ./filename.sh e.g. 
+   ```bash
+   ./convert_png_to_webp.sh
 
 4. **To execute the Script with arguments (convert_imageformat_to_webp.sh):**
-   Execute the script using  ./convert_png_to_webp.sh <image_extension>  e.g. ./convert_png_to_webp.sh jpeg
+   Execute the script using  ./convert_png_to_webp.sh image_extension  e.g. 
+   ```bash
+   ./convert_png_to_webp.sh jpeg
